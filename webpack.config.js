@@ -14,8 +14,7 @@ var config = {
                 test   : /\.jsx?/,
                 include: APP_DIR,
                 loader : 'babel-loader',
-                exclude: /node_modules/,
-                query  : {compact: false},
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
