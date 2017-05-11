@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node live-server.js",
+    "build": "webpack -d --watch --progress",
     "server": "node server/server.js"
   },
   "repository": {
@@ -20,7 +21,15 @@
   },
   "homepage": "https://github.com/DinhCEO/react-redux-client-server#readme",
   "devDependencies": {
-    "live-server": "^1.2.0"
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.28.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "live-server": "^1.2.0",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1"
   },
   "dependencies": {
     "express": "^4.15.2"
