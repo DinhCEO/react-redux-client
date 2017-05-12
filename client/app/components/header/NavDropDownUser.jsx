@@ -5,7 +5,13 @@ import {NavDropdown, MenuItem} from 'react-bootstrap';
 class NavDropDownUser extends React.Component {
     constructor(props) {
         super(props);
+        console.log('nav = ', props);
         this.state = {profile : {}};
+    }
+
+    logout() {
+        let {dispatch_logout} = this.props;
+        dispatch_logout();
     }
 
     componentWillMount() {
@@ -26,6 +32,7 @@ class NavDropDownUser extends React.Component {
                         )
                     })
                 }
+                <MenuItem onClick={this.logout.bind(this)}>Logout</MenuItem>
             </NavDropdown>
         )
     }

@@ -5,6 +5,7 @@ import NavDropDownUser from './NavDropDownUser.jsx'
 class HeaderComponent extends React.Component {
     constructor(props) {
         super(props);
+        console.log('header = ', props);
     }
 
     renderMenu() {
@@ -18,7 +19,7 @@ class HeaderComponent extends React.Component {
                     </Navbar.Header>
                     <Nav>
                         <NavItem eventKey={1} href="#">About</NavItem>
-                        <NavDropDownUser/>
+                        <NavDropDownUser dispatch_logout={this.props.dispatchLogout}/>
                     </Nav>
                 </Navbar>
             )

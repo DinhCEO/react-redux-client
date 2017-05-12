@@ -7,8 +7,8 @@ const mapStateToProps = (state) => ({
     isLogin : state.isLogin
 });
 const mapDispatchToProps = (dispatch) => ({
-    login : () => dispatch(login()),
-    logout : () => dispatch(logout())
+    dispatchLogin : () => dispatch(login()),
+    dispatchLogout : () => dispatch(logout())
 });
 
 const appContainer = connect(
