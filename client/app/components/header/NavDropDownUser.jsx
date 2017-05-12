@@ -38,7 +38,6 @@ class NavDropDownUser extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isLogin : state.isLogin
 });
 
 const mapDispatchToProps = (dispatch) => ({

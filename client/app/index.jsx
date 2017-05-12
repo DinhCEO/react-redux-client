@@ -6,6 +6,7 @@ import {Router, browserHistory} from 'react-router'
 import {Provider} from 'react-redux'
 import routers from './routers.jsx'
 
+
 const store = createStore(reducer);
 console.log(store.getState());
 
