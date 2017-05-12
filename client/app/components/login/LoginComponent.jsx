@@ -2,19 +2,16 @@ import React from 'react'
 
 class LoginComponent extends React.Component {
     constructor(props) {
-        console.log('loginComponent = ', props);
         super(props);
     }
 
     login() {
         let {dispatch_login} = this.props;
         dispatch_login();
-        console.log('loginComponent login = ', this.props);
     }
     logout() {
         let {dispatch_logout} = this.props;
         dispatch_logout();
-        console.log('loginComponent logout = ', this.props);
     }
 
     render() {

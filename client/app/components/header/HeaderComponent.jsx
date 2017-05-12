@@ -4,13 +4,10 @@ import NavDropDownUser from './NavDropDownUser.jsx'
 
 class HeaderComponent extends React.Component {
     constructor(props) {
-        console.log('HeaderComponent', props);
         super(props);
     }
 
     renderMenu() {
-        console.log('HeaderComponent state render = ', this.props);
-        console.log(this.props.isLogin);
         if (this.props.isLogin) {
             return (
                 <Navbar>

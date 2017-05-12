@@ -1,18 +1,11 @@
 import React from 'react'
 import Header from '../components/header/HeaderComponent.jsx'
 import Login from '../components/login/LoginComponent.jsx'
-import {EventEmitter} from 'fbemitter'
 
 class App extends React.Component {
     constructor(props) {
         console.log('appComponent = ', props);
         super(props);
-        let emitter = new EventEmitter();
-        emitter.addListener('login', function () {
-            return true
-        });
-        emitter.emit('login');
-        console.log(emitter);
     }
 
     render() {
