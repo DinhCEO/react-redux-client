@@ -1,11 +1,12 @@
 import React from 'react'
-import {Nav, Navbar, NavItem} from 'react-bootstrap';
+import {Nav, Navbar, NavItem} from 'react-bootstrap'
 import NavDropDownUser from './NavDropDownUser.jsx'
+import {connect} from 'react-redux'
+
 
 class HeaderComponent extends React.Component {
     constructor(props) {
         super(props);
-        console.log('header = ', props);
     }
 
     renderMenu() {
@@ -19,7 +20,7 @@ class HeaderComponent extends React.Component {
                     </Navbar.Header>
                     <Nav>
                         <NavItem eventKey={1} href="#">About</NavItem>
-                        <NavDropDownUser dispatch_logout={this.props.dispatchLogout}/>
+                        <NavDropDownUser />
                     </Nav>
                 </Navbar>
             )
@@ -49,5 +50,14 @@ class HeaderComponent extends React.Component {
         );
     }
 }
+const mapStateToProps = (state) => ({
+    isLogin : state.isLogin
+});
 
-export default HeaderComponent;
+
+const headerContainer = connect(
+    mapStateToProps
+)(HeaderComponent);
+
+
+export default headerContainer;

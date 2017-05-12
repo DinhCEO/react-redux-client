@@ -1,30 +1,29 @@
+import {connect} from 'react-redux'
 import React from 'react'
 import MenuService from '../../services/MenuService.jsx'
-import {NavDropdown, MenuItem} from 'react-bootstrap';
+import {NavDropdown, MenuItem} from 'react-bootstrap'
+import {logout} from '../../action/index.jsx'
 
 class NavDropDownUser extends React.Component {
     constructor(props) {
         super(props);
-        console.log('nav = ', props);
         this.state = {profile : {}};
     }
 
     logout() {
-        let {dispatch_logout} = this.props;
-        dispatch_logout();
+        let {dispatchLogout} = this.props;
+        dispatchLogout();
     }
 
     componentWillMount() {
         console.log('componentWillMount');
-        if (1 == 1) {
-            this.setState({profile : {name : 'dinhceo'}});
-        }
+        this.setState({profile : {name : 'dinhceo'}});
     }
 
     render() {
         console.log('render');
         return (
-            <NavDropdown eventKey={2} title={this.state.profile.name || "Dropdown"} id="basic-nav-dropdown">
+            <NavDropdown eventKey={2} title={this.state['profile']['name'] || "Dropdown"} id="basic-nav-dropdown">
                 {
                     MenuService.getMenu().map((item, index) => {
                         return (
@@ -38,4 +37,18 @@ class NavDropDownUser extends React.Component {
     }
 }
 
-export default NavDropDownUser;
+const mapStateToProps = (state) => ({
+    isLogin : state.isLogin
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    dispatchLogout : () => dispatch(logout())
+});
+
+const navContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NavDropDownUser);
+
+
+export default navContainer;

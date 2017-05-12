@@ -1,5 +1,5 @@
 import React from 'react'
-import {AppComponent} from './containers/index.jsx'
+import AppComponent from './components/App.jsx'
 const style404 = {
     textAlign : 'center'
 };

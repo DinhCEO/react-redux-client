@@ -11,8 +11,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Header isLogin={this.props.isLogin} dispatchLogout={this.props.dispatchLogout}/>
-                <Login dispatch_login={this.props.dispatchLogin}/>
+                <Header />
+                <Login />
             </div>
         )
     }

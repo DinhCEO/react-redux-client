@@ -4,8 +4,7 @@ import {reducer as formReducer} from 'redux-form'
 
 
 const rootReducers = combineReducers({
-    isLogin,
-    form : formReducer
+    isLogin
 });
 
 export default rootReducers;
