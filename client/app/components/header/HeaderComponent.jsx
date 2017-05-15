@@ -19,7 +19,7 @@ class HeaderComponent extends React.Component {
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
-                        <NavItem eventKey={1} href="#">About</NavItem>
+                        <NavItem eventKey={1} href="/about">About</NavItem>
                         <NavDropDownUser />
                     </Nav>
                 </Navbar>
@@ -29,11 +29,11 @@ class HeaderComponent extends React.Component {
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="">React-Bootstrap</a>
+                            <a href="/">Home</a>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
-                        <NavItem eventKey={1} href="#">About</NavItem>
+                        <NavItem eventKey={1} href="/about">About</NavItem>
                         <NavItem eventKey={2} href="#">Login</NavItem>
                     </Nav>
                 </Navbar>
@@ -51,7 +51,7 @@ class HeaderComponent extends React.Component {
     }
 }
 const mapStateToProps = (state) => ({
-    isLogin : state.isLogin
+    isLogin: state.auth['isLogin']
 });
 
 

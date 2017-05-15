@@ -7,23 +7,24 @@ import {logout} from '../../action/index.jsx'
 class NavDropDownUser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {profile : {}};
+        this.state = {profile: {}};
     }
 
     logout() {
-        let {dispatchLogout} = this.props;
-        dispatchLogout();
+        let {logout} = this.props;
+        logout();
     }
 
     componentWillMount() {
         console.log('componentWillMount');
-        this.setState({profile : {name : 'dinhceo'}});
+        this.setState({profile: this.props.profile});
     }
 
     render() {
         console.log('render');
+        console.log('props = ', this.props);
         return (
-            <NavDropdown eventKey={2} title={this.state['profile']['name'] || "Dropdown"} id="basic-nav-dropdown">
+            <NavDropdown eventKey={2} title={this.props['profile']['username'] || "Dropdown"} id="basic-nav-dropdown">
                 {
                     MenuService.getMenu().map((item, index) => {
                         return (
@@ -38,10 +39,11 @@ class NavDropDownUser extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    profile: state.auth['profile']
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchLogout : () => dispatch(logout())
+    logout: () => dispatch(logout())
 });
 
 const navContainer = connect(

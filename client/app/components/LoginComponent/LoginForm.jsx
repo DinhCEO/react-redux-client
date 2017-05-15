@@ -2,11 +2,9 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 
 
-
-class LoginComponent extends React.Component {
+class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        console.log('form login props = ', props);
     }
 
     render() {
@@ -26,9 +24,9 @@ class LoginComponent extends React.Component {
 }
 
 
-LoginComponent = reduxForm({
-    form : 'loginForm' // a unique name for this form
-})(LoginComponent);
+LoginForm = reduxForm({
+    form: 'loginForm' // a unique name for this form
+})(LoginForm);
 
 
-export default LoginComponent;
+export default LoginForm;

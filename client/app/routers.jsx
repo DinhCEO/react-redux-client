@@ -1,7 +1,11 @@
 import React from 'react'
-import AppComponent from './components/App.jsx'
+import Home from './components/App.jsx'
+import LoginComponent from './components/LoginComponent/LoginComponent.jsx'
+import AboutComponent from './components/about/aboutComponent.jsx'
+
+
 const style404 = {
-    textAlign : 'center'
+    textAlign: 'center'
 };
 const NotFoundComponent = () => (
     <div style={style404}>
@@ -9,19 +13,24 @@ const NotFoundComponent = () => (
     </div>
 );
 
+const loginRequire = (nextState, replace) => {
+    replace('*');
+};
 
 
 const routers = {
-    path : '/',
-    name : 'Home',
-    component : AppComponent,
-    indexRoute : {component : AppComponent},
-    onEnter : (nextState, replace) => {
-    },
-    childRoutes : [
+    path: '/',
+    component: Home,
+    indexRoute: {component: LoginComponent},
+    childRoutes: [
         {
-            path : '*',
-            component : NotFoundComponent
+            path: '/about',
+            //onEnter: loginRequire,
+            component: AboutComponent
+        },
+        {
+            path: '*',
+            component: NotFoundComponent
         }
     ]
 };

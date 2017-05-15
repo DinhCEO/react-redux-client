@@ -1,0 +1,14 @@
+import React from 'react'
+
+
+export default class Footer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <h1 className="text-center">This is footer</h1>
+        )
+    }
+}

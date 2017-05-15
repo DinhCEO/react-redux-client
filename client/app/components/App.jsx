@@ -1,8 +1,6 @@
-import {connect} from 'react-redux'
 import React from 'react'
 import Header from '../components/header/HeaderComponent.jsx'
-import Login from '../components/login/LoginComponent.jsx'
-import {login} from '../action/index.jsx'
+import Footer from '../components/footer/footer.jsx'
 
 
 class App extends React.Component {
@@ -11,31 +9,17 @@ class App extends React.Component {
         super(props);
     }
 
-    login(values) {
-        console.log(values);
-        let {dispatchLogin} = this.props;
-        dispatchLogin();
-    }
-
     render() {
         return (
+            //contain header and footer
             <div>
-                <Header />
-                <Login onSubmit={this.login.bind(this)}/>
+                <Header/>
+                {this.props.children}
+                <Footer/>
             </div>
         )
     }
 
 }
 
-const mapStateToProps = (state) => ({});
-const mapDispatchToProps = (dispatch) => ({
-    dispatchLogin : () => dispatch(login())
-});
-
-const AppContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App);
-
-export default AppContainer;
+export default App;
