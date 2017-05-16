@@ -4,11 +4,11 @@ import Footer from '../components/footer/footer.jsx'
 import {connect} from 'react-redux'
 import {checkToken} from '../action/index.jsx'
 import {browserHistory} from 'react-router'
+// import Loading from '../components/loading-codepen/loading.jsx'
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {name: 'dincheo'};
     }
 
     componentWillMount() {
@@ -32,6 +32,8 @@ class App extends React.Component {
             <div>
                 <Header/>
                 {this.props.children}
+                <br/>
+                {/*<Loading/>*/}
                 <Footer/>
             </div>
         )
