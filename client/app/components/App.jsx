@@ -3,7 +3,7 @@ import Header from '../components/header/HeaderComponent.jsx'
 import Footer from '../components/footer/footer.jsx'
 import {connect} from 'react-redux'
 import {checkToken} from '../action/index.jsx'
-import {browserHistory} from 'react-router';
+import {browserHistory} from 'react-router'
 
 class App extends React.Component {
     constructor(props) {

@@ -3,6 +3,7 @@ import LoginForm from './LoginForm.jsx'
 import {login} from '../../action/index.jsx'
 import {connect} from 'react-redux'
 import {toastr} from 'react-redux-toastr'
+import {browserHistory} from 'react-router';
 
 
 class LoginComponent extends React.Component {
@@ -13,6 +14,7 @@ class LoginComponent extends React.Component {
     login(values) {
         return this.props.login(values).then(() => {
             toastr.success('Welcome!', 'Login success');
+            browserHistory.push('/home');
         }).catch(err => {
             toastr.error('Login failed!', `${err.data.message}`);
         });
