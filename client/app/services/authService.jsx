@@ -37,7 +37,7 @@ class AuthService {
     getProfile() {
         let request = {
             method: 'GET',
-            url: `${this.apiUrl}/admin/profile`,
+            url: `${this.apiUrl['ApiUrl']}/profile`,
         };
         return this.axios(request).then(AuthService.resolveData);
     }

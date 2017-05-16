@@ -2,7 +2,7 @@ import Config from '../config.jsx'
 import Axios from 'axios'
 
 
-import authService from './auth/authService.jsx'
+import authService from './authService.jsx'
 import {browserHistory} from 'react-router';
 
 const config = new Config();
@@ -17,7 +17,8 @@ axios.interceptors.request.use(axiosConfig => {
 axios.interceptors.response.use(
     response => response,
     error => {
-        if (error.response && (error.response.status === 401)) {
+        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+            console.log('error 401 or 403');
             localStorage.removeItem('token');
             browserHistory.push('/');
         }

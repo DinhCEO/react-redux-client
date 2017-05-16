@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from './components/App.jsx'
+import App from './components/App.jsx'
 import LoginComponent from './components/LoginComponent/LoginComponent.jsx'
 import AboutComponent from './components/about/aboutComponent.jsx'
 
@@ -12,26 +12,41 @@ const NotFoundComponent = () => (
         <h2 className="text-center">404 - Not found</h2>
     </div>
 );
+const HomeComponent = () => (
+    <div style={style404}>
+        <h2 className="text-center">Home</h2>
+    </div>
+);
 
 const loginRequire = (nextState, replace) => {
-    replace('*');
+    if (!localStorage.getItem('token')) {
+        replace('/');
+    } else {
+        console.log('req');
+        //todo req server check token
+    }
 };
 
 
 const routers = {
     path: '/',
-    component: Home,
+    component: App,
     indexRoute: {component: LoginComponent},
     childRoutes: [
-        {
-            path: '/about',
-            //onEnter: loginRequire,
-            component: AboutComponent
-        },
-        {
-            path: '*',
-            component: NotFoundComponent
-        }
+        // {
+        //     path: '/home',
+        //     onEnter: loginRequire,
+        //     component: HomeComponent
+        // },
+        // {
+        //     path: '/about',
+        //     onEnter: loginRequire,
+        //     component: AboutComponent
+        // },
+        // {
+        //     path: '*',
+        //     component: NotFoundComponent
+        // }
     ]
 };
 

@@ -3,6 +3,8 @@ import {Nav, Navbar, NavItem} from 'react-bootstrap'
 import NavDropDownUser from './NavDropDownUser.jsx'
 import {connect} from 'react-redux'
 
+import {Link} from 'react-router'
+
 
 class HeaderComponent extends React.Component {
     constructor(props) {
@@ -15,7 +17,7 @@ class HeaderComponent extends React.Component {
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="">React-Bootstrap</a>
+                            <a href="/">React-Bootstrap</a>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>

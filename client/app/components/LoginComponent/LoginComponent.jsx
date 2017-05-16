@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 class LoginComponent extends React.Component {
     constructor(props) {
         super(props);
-        console.log('form loginComponent props = ', props);
     }
 
     login(values) {

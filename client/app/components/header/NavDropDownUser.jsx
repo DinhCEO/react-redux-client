@@ -16,13 +16,10 @@ class NavDropDownUser extends React.Component {
     }
 
     componentWillMount() {
-        console.log('componentWillMount');
         this.setState({profile: this.props.profile});
     }
 
     render() {
-        console.log('render');
-        console.log('props = ', this.props);
         return (
             <NavDropdown eventKey={2} title={this.props['profile']['username'] || "Dropdown"} id="basic-nav-dropdown">
                 {

@@ -1,2 +1,2 @@
-export const LOGIN = 'LOGIN';
-export const LOGOUT = 'LOGOUT';
+export const SET_AUTH_PROFILE = 'SET_AUTH_PROFILE';
+export const CLEAR_AUTH_PROFILE = 'CLEAR_AUTH_PROFILE';

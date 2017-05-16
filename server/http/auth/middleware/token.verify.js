@@ -21,7 +21,7 @@ const LoginRequire = function (req, res, next) {
    }catch (ex){
       return res.status(401).json({
            code    : 'AUTH_ERROR',
-           message : 'Token not found'
+           message : 'Authorization not found'
        });
    }
 };

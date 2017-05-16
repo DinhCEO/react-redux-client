@@ -55,5 +55,19 @@ router.post('/login', loginCredential, function (req, res) {
         });
     }
 });
+router.get('/profile', LoginRequire, function (req, res) {
+    let token = (req.query.token || req.body.token || req.get('Authorization') || '').replace("Bearer ", "");
+    try {
+        let payload = jwtService.decode(token);
+        res.status(200).json({
+            profile: payload
+        });
+    } catch (err) {
+        res.status(401).json({
+            code: 'AUTH_ERROR',
+            message: 'Authorization not found!'
+        });
+    }
+});
 
 module.exports = router;
