@@ -1,5 +1,6 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
+import {ButtonToolbar, Button} from 'react-bootstrap'
 
 
 class LoginForm extends React.Component {
@@ -10,13 +11,16 @@ class LoginForm extends React.Component {
     render() {
         let {handleSubmit} = this.props;
         return (
-            <div>
+            <div className="">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">username&nbsp;</label>
                     <Field name="username" component="input" type="text"/><br/><br/>
                     <label htmlFor="password">password&nbsp;</label>
                     <Field name="password" component="input" type="text"/><br/>
-                    <button type="submit">Login</button>
+                    <ButtonToolbar>
+                        <Button bsStyle="primary" type="submit" bsSize="small">Login</Button>
+                    </ButtonToolbar>
+                    {/*<button type="submit">Login</button>*/}
                 </form>
             </div>
         )
@@ -24,9 +28,9 @@ class LoginForm extends React.Component {
 }
 
 
-LoginForm = reduxForm({
+let loginForm = reduxForm({
     form: 'loginForm' // a unique name for this form
 })(LoginForm);
 
 
-export default LoginForm;
+export default loginForm;

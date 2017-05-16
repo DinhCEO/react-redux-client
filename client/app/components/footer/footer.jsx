@@ -8,7 +8,7 @@ export default class Footer extends React.Component {
 
     render() {
         return (
-            <h1 className="text-center">This is footer</h1>
+            <h4 className="text-center">This is footer</h4>
         )
     }
 }
