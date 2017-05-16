@@ -17,31 +17,28 @@ class App extends React.Component {
 
     componentDidMount() {
         console.log('componentDidMount');
-        // this.props.checkToken().then((bol) => {
-        //     if (bol && this.props.location.pathname === '/') {
-        //         console.log('bol = true');
-        //         this.props.router.push('/home');
-        //     }
-        // });
+        this.props.checkToken().then((bol) => {
+            if (bol && this.props.location.pathname === '/') {
+                console.log('bol = true');
+                this.props.router.push('/home');
+            }
+        });
+    }
 
-        // setTimeout(function () {
-        //     this.setState({name: 'chip-bong'});
-        // }, 5000)
+    componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps);
     }
 
     render() {
         console.log('render :D');
-        return (
-            <span>{this.state.name}</span>
-        )
 
-        // return (
-        //     <div>
-        //         <Header/>
-        //         {this.props.children}
-        //         <Footer/>
-        //     </div>
-        // )
+        return (
+            <div>
+                <Header/>
+                {this.props.children}
+                <Footer/>
+            </div>
+        )
     }
 }
 const mapStateToProps = (state) => ({
