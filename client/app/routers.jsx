@@ -12,6 +12,11 @@ const NotFoundComponent = () => (
         <h2 className="text-center">404 - Not found</h2>
     </div>
 );
+const ServerNotFoundComponent = () => (
+    <div style={style404}>
+        <h2 className="text-center">Server - Not found</h2>
+    </div>
+);
 const HomeComponent = () => (
     <div style={style404}>
         <h2 className="text-center">Home</h2>
@@ -39,6 +44,10 @@ const routers = {
             path: '/about',
             onEnter: loginRequire,
             component: AboutComponent
+        },
+        {
+            path: '/500',
+            component: ServerNotFoundComponent
         },
         {
             path: '*',

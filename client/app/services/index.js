@@ -18,9 +18,11 @@ axios.interceptors.response.use(
     response => response,
     error => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-            console.log('error 401 or 403');
             localStorage.removeItem('token');
             browserHistory.push('/');
+        }
+        if (error.response.status === 500) {
+            browserHistory.push('/500');
         }
 
         return Promise.reject(error.response || {data: {message: 'not connected to the internet'}});

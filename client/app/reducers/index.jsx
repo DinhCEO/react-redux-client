@@ -6,7 +6,8 @@ import {reducer as toastrReducer} from 'react-redux-toastr'
 
 const rootReducers = combineReducers({
     auth,
-    form : formReducer
+    form: formReducer,
+    toastr: toastrReducer
 });
 
 export default rootReducers;

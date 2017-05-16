@@ -2,6 +2,7 @@ import React from 'react'
 import LoginForm from './LoginForm.jsx'
 import {login} from '../../action/index.jsx'
 import {connect} from 'react-redux'
+import {toastr} from 'react-redux-toastr'
 
 
 class LoginComponent extends React.Component {
@@ -10,8 +11,10 @@ class LoginComponent extends React.Component {
     }
 
     login(values) {
-        return this.props.login(values).catch(err => {
-            console.log(err);
+        return this.props.login(values).then(() => {
+            toastr.success('Welcome!', 'Login success');
+        }).catch(err => {
+            toastr.error('Login failed!', `${err.data.message}`);
         });
     }
 

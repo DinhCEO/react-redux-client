@@ -3,35 +3,31 @@ import Header from '../components/header/HeaderComponent.jsx'
 import Footer from '../components/footer/footer.jsx'
 import {connect} from 'react-redux'
 import {checkToken} from '../action/index.jsx'
+import {browserHistory} from 'react-router';
 
 class App extends React.Component {
     constructor(props) {
-        console.log('appComponent props = ', props);
         super(props);
         this.state = {name: 'dincheo'};
     }
 
     componentWillMount() {
-        console.log('componentWillMount');
+        // console.log('componentWillMount');
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
         this.props.checkToken().then((bol) => {
             if (bol && this.props.location.pathname === '/') {
-                console.log('bol = true');
-                this.props.router.push('/home');
+                browserHistory.push('/home');
             }
         });
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('nextProps', nextProps);
+        // console.log('nextProps', nextProps);
     }
 
     render() {
-        console.log('render :D');
-
         return (
             <div>
                 <Header/>

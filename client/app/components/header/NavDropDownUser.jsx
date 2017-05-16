@@ -3,6 +3,7 @@ import React from 'react'
 import MenuService from '../../services/MenuService.jsx'
 import {NavDropdown, MenuItem} from 'react-bootstrap'
 import {logout} from '../../action/index.jsx'
+import {browserHistory} from 'react-router';
 
 class NavDropDownUser extends React.Component {
     constructor(props) {
@@ -13,10 +14,15 @@ class NavDropDownUser extends React.Component {
     logout() {
         let {logout} = this.props;
         logout();
+        browserHistory.push('/');
     }
 
     componentWillMount() {
         this.setState({profile: this.props.profile});
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // console.log('nextProps NavDropDownUser = ', nextProps);
     }
 
     render() {
