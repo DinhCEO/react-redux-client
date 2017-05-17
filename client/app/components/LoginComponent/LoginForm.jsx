@@ -1,7 +1,22 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {ButtonToolbar, Button} from 'react-bootstrap'
+import './loginForm.scss'
+import Validate from './validates.jsx'
 
+const renderField = ({input, label, placeholder, type, meta: {touched, error, warning}}) => (
+    <div className="form-group" style={{position: 'relative'}}>
+        <input className="form-control input-customer" {...input} type={type}
+               placeholder={placeholder}/>
+        {touched && ((error && <div>
+            <div className="text-center" style={{marginTop: '-17px'}}>
+                <div className="arrow-up display-inline-block"/>
+            </div>
+            <div className="bg-blue field-message-error animated">
+                {error}
+            </div>
+        </div>))}
+    </div>
+);
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -10,26 +25,39 @@ class LoginForm extends React.Component {
 
     render() {
         let {handleSubmit} = this.props;
+
         return (
-            <div className="">
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="username">username&nbsp;</label>
-                    <Field name="username" component="input" type="text"/><br/><br/>
-                    <label htmlFor="password">password&nbsp;</label>
-                    <Field name="password" component="input" type="text"/><br/>
-                    <ButtonToolbar>
-                        <Button bsStyle="primary" type="submit" bsSize="small">Login</Button>
-                    </ButtonToolbar>
-                    {/*<button type="submit">Login</button>*/}
+            <div className="wrapper">
+                <form onSubmit={handleSubmit} className="form-signin">
+                    <h2 className="form-signin-heading">Please login</h2>
+                    <Field type="text" name="email" placeholder="Email Address" component={renderField}/>
+                    <Field type="password" name="password" placeholder="Password" component={renderField}/>
+                    <button className="btn btn-primary btn-block" type="submit">Login</button>
                 </form>
             </div>
         )
     }
 }
+const validate = (values) => {
+    const errors = {};
+    if (!values.email) {
+        errors.email = 'Email address required';
+    } else if (!Validate.email(values.email)) {
+        errors.email = 'Email address invalid ';
+    }
+
+    if (!values.password) {
+        errors.password = 'Password required';
+    } else if (values.password.length < 6) {
+        errors.password = 'Password is more than 6 character';
+    }
+    return errors;
+};
 
 
 let loginForm = reduxForm({
-    form: 'loginForm' // a unique name for this form
+    form: 'loginForm', // a unique name for this form
+    validate
 })(LoginForm);
 
 

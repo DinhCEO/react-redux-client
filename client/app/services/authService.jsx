@@ -17,12 +17,12 @@ class AuthService {
      * @param password
      * @returns {Promise}
      */
-    signIn(username, password) {
+    signIn(email, password) {
         let request = {
             method: 'POST',
             url: `${this.apiUrl['ApiUrl']}/login`,
             data: {
-                username: username,
+                email: email,
                 password: password,
             }
         };

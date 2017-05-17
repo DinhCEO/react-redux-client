@@ -43,7 +43,7 @@ router.post('/login', loginCredential, function (req, res) {
         const data = {
             token: token,
             profile: {
-                username: req.body.username,
+                username: req.body.email,
                 role: 'customer'
             }
         };

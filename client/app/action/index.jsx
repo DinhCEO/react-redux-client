@@ -1,8 +1,8 @@
 import {SET_AUTH_PROFILE, CLEAR_AUTH_PROFILE} from './actions.jsx'
 import {AuthService} from '../services'
-export function login({username, password}) {
+export function login({email, password}) {
     return async (dispatch) => {
-        const result = await AuthService.signIn(username, password);
+        const result = await AuthService.signIn(email, password);
         AuthService.storeToken(result.token);
         AuthService.storeRole(JSON.stringify(result.profile));
         dispatch({type: SET_AUTH_PROFILE, profile: result.profile});
