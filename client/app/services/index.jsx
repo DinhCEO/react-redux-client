@@ -2,7 +2,7 @@ import Config from '../config.jsx'
 import Axios from 'axios'
 
 
-import authService from './authService.jsx'
+import AuthService from './authService.jsx'
 import {browserHistory} from 'react-router';
 
 const config = new Config();
@@ -28,5 +28,4 @@ axios.interceptors.response.use(
         return Promise.reject(error.response || {data: {message: 'not connected to the internet'}});
     }
 );
-
-export let AuthService = new authService(axios, config);
+export let authService = new AuthService(axios, config);

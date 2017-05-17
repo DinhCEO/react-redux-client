@@ -10,10 +10,17 @@ class AuthService {
         this.apiUrl = config.getApiUrl();
         this.config = config;
     }
+    test(){
+        let request = {
+            method: 'GET',
+            url: `${this.apiUrl['ApiUrl']}/test`
+        };
+        return this.axios(request).then(res => res.data);
+    }
 
     /**
      *
-     * @param username
+     * @param email
      * @param password
      * @returns {Promise}
      */

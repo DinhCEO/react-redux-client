@@ -8,8 +8,6 @@ import {browserHistory} from 'react-router';
 class NavDropDownUser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {profile: {}};
-        console.log('props Nav = ',props);
     }
 
     logout() {

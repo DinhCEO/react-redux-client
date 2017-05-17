@@ -2,42 +2,16 @@ const express = require('express');
 const router = express.Router();
 const JwtService = require('../../auth/jwt/JwtService');
 const jwtService = new JwtService();
-const loginCredential = require('../../auth/middleware/user-credential.require');
+const userCredentialRequire = require('../../auth/middleware/user-credential.require');
 const LoginRequire = require('./../../auth/middleware/token.verify');
-const rand = require('random-key');
 
-const dataFake = [
-    {
-        id: 'asaHAGTlW3o3pWTy',
-        completed: false,
-        text: "Learn about actions 1"
-    },
-    {
-        id: 'asaHAGTlW3o3pWTM',
-        completed: false,
-        text: "Learn about actions 2"
-    },
-    {
-        id: 'asaHAGTlW3o3pWTt',
-        completed: false,
-        text: "Learn about actions 3"
-    }
-];
+router.get('/test', function (req, res) {
+    setTimeout(function () {
+        res.status(200).json({name: 'server response :D'});
+    }, 5000);
+});
 
-router.get('/get-data', LoginRequire, function (req, res) {
-    res.status(200).json(dataFake);
-});
-router.put('/:text', LoginRequire, function (req, res) {
-    let text = req.params.text;
-    let newTodo = {
-        id: rand.generate(),
-        completed: false,
-        text: text
-    };
-    dataFake.push(newTodo);
-    res.json(newTodo);
-});
-router.post('/login', loginCredential, function (req, res) {
+router.post('/login', userCredentialRequire, function (req, res) {
     try {
         const token = jwtService.encode(req.body);
         const data = {
@@ -61,8 +35,9 @@ router.get('/profile', LoginRequire, function (req, res) {
         let payload = jwtService.decode(token);
         res.status(200).json({
             profile: {
-                email:payload['email'],
-                time:payload['timestamp']
+                email: payload['email'],
+                role: 'customer',
+                time: payload['timestamp']
             }
         });
     } catch (err) {

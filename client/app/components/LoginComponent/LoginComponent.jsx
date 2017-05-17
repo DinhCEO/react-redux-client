@@ -16,7 +16,7 @@ class LoginComponent extends React.Component {
             toastr.success('Welcome!', 'Login success');
             browserHistory.push('/home');
         }).catch(err => {
-            toastr.error('Login failed!', `${err.data.message}`);
+            toastr.error('Login failed!', `${err.data['message']}`);
         });
     }
 

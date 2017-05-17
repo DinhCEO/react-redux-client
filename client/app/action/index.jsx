@@ -1,37 +1,37 @@
 import {SET_AUTH_PROFILE, CLEAR_AUTH_PROFILE} from './actions.jsx'
-import {AuthService} from '../services'
+import {authService} from '../services/index.jsx'
 export function login({email, password}) {
     return async (dispatch) => {
-        const result = await AuthService.signIn(email, password);
-        AuthService.storeToken(result.token);
-        AuthService.storeRole(JSON.stringify(result.profile));
+        const result = await authService.signIn(email, password);
+        authService.storeToken(result.token);
+        authService.storeRole(JSON.stringify(result.profile));
         dispatch({type: SET_AUTH_PROFILE, profile: result.profile});
     };
 }
 
 export const checkToken = () => async (dispatch) => {
     try {
-        if (!AuthService.getToken()) {
+        if (!authService.getToken()) {
             dispatch({type: CLEAR_AUTH_PROFILE});
             return false;
         }
 
-        const result = await AuthService.getProfile();
+        const result = await authService.getProfile();
         const profile = result.profile || {};
 
-        AuthService.storeRole(profile.role);
+        authService.storeRole(profile.role);
         dispatch({type: SET_AUTH_PROFILE, profile});
         return true;
     } catch (e) {
-        AuthService.clearRole();
-        AuthService.clearToken();
+        authService.clearRole();
+        authService.clearToken();
         dispatch({type: CLEAR_AUTH_PROFILE});
         return false;
     }
 };
 export function logout() {
-    AuthService.clearToken();
-    AuthService.clearRole();
+    authService.clearToken();
+    authService.clearRole();
     return {
         type: CLEAR_AUTH_PROFILE
     }
