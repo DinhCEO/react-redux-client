@@ -18,7 +18,6 @@ class NavDropDownUser extends React.Component {
     }
 
     componentWillMount() {
-        this.setState({profile: this.props.profile});
     }
 
     componentWillReceiveProps(nextProps) {
@@ -27,7 +26,7 @@ class NavDropDownUser extends React.Component {
 
     render() {
         return (
-            <NavDropdown eventKey={2} title={this.props['profile']['username'] || "Dropdown"} id="basic-nav-dropdown">
+            <NavDropdown eventKey={2} title={this.props['profile']['email'] || "Dropdown"} id="basic-nav-dropdown">
                 {
                     MenuService.getMenu().map((item, index) => {
                         return (
