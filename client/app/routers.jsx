@@ -41,6 +41,11 @@ const routers = {
             component: HomeComponent
         },
         {
+            path: '/edit-profile',
+            onEnter: loginRequire,
+            component: HomeComponent
+        },
+        {
             path: '/about',
             onEnter: loginRequire,
             component: AboutComponent

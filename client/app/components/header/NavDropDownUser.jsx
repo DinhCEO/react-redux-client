@@ -9,6 +9,7 @@ class NavDropDownUser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {profile: {}};
+        console.log('props Nav = ',props);
     }
 
     logout() {
@@ -26,7 +27,7 @@ class NavDropDownUser extends React.Component {
 
     render() {
         return (
-            <NavDropdown eventKey={2} title={this.props['profile']['email'] || "Dropdown"} id="basic-nav-dropdown">
+            <NavDropdown eventKey={2} title={this.props.profile['email'] || "Dropdown"} id="basic-nav-dropdown">
                 {
                     MenuService.getMenu().map((item, index) => {
                         return (

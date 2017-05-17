@@ -43,7 +43,7 @@ router.post('/login', loginCredential, function (req, res) {
         const data = {
             token: token,
             profile: {
-                username: req.body.email,
+                email: req.body.email,
                 role: 'customer'
             }
         };
@@ -60,7 +60,10 @@ router.get('/profile', LoginRequire, function (req, res) {
     try {
         let payload = jwtService.decode(token);
         res.status(200).json({
-            profile: payload
+            profile: {
+                email:payload['email'],
+                time:payload['timestamp']
+            }
         });
     } catch (err) {
         res.status(401).json({
