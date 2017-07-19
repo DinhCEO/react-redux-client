@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node live-server.js",
-    "build": "webpack -d --watch --progress",
+    "build": "node_modules/.bin/webpack -d --watch --progress",
     "server": "node server/server.js"
   },
   "repository": {
@@ -42,6 +42,7 @@
     "fbemitter": "^2.1.1",
     "font-awesome": "^4.7.0",
     "jwt-simple": "^0.5.1",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "random-key": "^0.3.2",
     "react": "^15.5.4",
